@@ -11,5 +11,5 @@ class GeneticAlgorithm {
 
     public:
         GeneticAlgorithm(Fitness fitness);
-        std::vector<double> run(int population_size, int num_generations, double mutation_probability);
+        std::vector<double> run(const int& population_size, const int& num_generations, const double& mutation_probability);
 };

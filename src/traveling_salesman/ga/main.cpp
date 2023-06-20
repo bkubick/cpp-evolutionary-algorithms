@@ -10,7 +10,7 @@
 #include "genetic_algorithm.h"
 
 
-std::vector< std::vector<double> > readCoordinateCsvFile(std::string filepath) {
+std::vector< std::vector<double> > readCoordinateCsvFile(const std::string& filepath) {
     std::ifstream myFile;
     myFile.open(filepath, std::ios::in);
     
