@@ -58,8 +58,8 @@ int main() {
     // fitness
     std::cout << "Creating Fitness" << std::endl;
     Fitness fitness = Fitness(coordinates);
-    GeneticAlgorithm ga = GeneticAlgorithm(30, 1000, 0.01, fitness);
+    GeneticAlgorithm ga = GeneticAlgorithm(fitness);
 
     // Running algorithm
-    ga.run();
+    ga.run(30, 50, 0.01);
 }

@@ -9,14 +9,10 @@
 #include "../utils/debug.h"
 #include "../utils/random.h"
 
-GeneticAlgorithm::GeneticAlgorithm(
-    int population_size,
-    int num_generations,
-    double mutation_probability,
-    Fitness fitness): population_size(population_size), num_generations(num_generations), mutation_probability(mutation_probability), fitness(fitness){};
+GeneticAlgorithm::GeneticAlgorithm(Fitness fitness): fitness(fitness){};
 
 
-std::vector<double> GeneticAlgorithm::run()
+std::vector<double> GeneticAlgorithm::run(int population_size, int num_generations, double mutation_probability)
 {
     std::cout << "Starting Genetic algorithm" << std::endl;
 

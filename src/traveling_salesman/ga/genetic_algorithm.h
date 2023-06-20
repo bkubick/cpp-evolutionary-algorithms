@@ -7,12 +7,9 @@
 
 class GeneticAlgorithm {
     private:
-        int population_size;
-        int num_generations;
-        double mutation_probability;
         Fitness fitness;
 
     public:
-        GeneticAlgorithm(int population_size, int num_generations, double mutation_probability, Fitness fitness);
-        std::vector<double> run();
+        GeneticAlgorithm(Fitness fitness);
+        std::vector<double> run(int population_size, int num_generations, double mutation_probability);
 };
