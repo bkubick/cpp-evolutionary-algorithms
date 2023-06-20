@@ -1,9 +1,12 @@
 #pragma once
 
 #include <vector>
+
 using std::vector;
 
-class Fitness {
+
+class Fitness
+{
     private:
         vector< vector<double> > fitness_matrix;
         vector< vector<double> > createFitnessMatrix(vector< vector<double> > const& coordinates);

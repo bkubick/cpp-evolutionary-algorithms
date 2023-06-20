@@ -12,7 +12,8 @@ template <typename T, typename Func>
  * 
  * @param list the list to be printed.
 */
-void printListHelper(std::vector<T> list, Func printItem) {
+void printListHelper(std::vector<T> list, Func printItem)
+{
     std::cout << '[';
     for (int i = 0; i < list.size(); i++) {
         printItem(list[i]);
@@ -30,17 +31,19 @@ void printListHelper(std::vector<T> list, Func printItem) {
  * 
  * @param list the list to be printed.
 */
-void printList(std::vector<int> list) {
+void printList(std::vector<int> list)
+{
    printListHelper(list, [](int item) {std::cout << item;});
 }
 
 
 /**
- * Utility function to print out the entities in a vector.
+ * Utility function to print out the double vector entities in a vector.
  * 
  * @param list the list to be printed.
 */
-void printList(std::vector< std::vector<double> > list) {
+void printList(std::vector< std::vector<double> > list)
+{
     auto lambda = [](std::vector<double> item) {
         std::cout << '[';
         for (auto i : item) {
@@ -56,11 +59,12 @@ void printList(std::vector< std::vector<double> > list) {
 
 
 /**
- * Utility function to print out the int entities in a vector.
+ * Utility function to print out the double entities in a vector.
  * 
  * @param list the list to be printed.
 */
-void printList(std::vector<double> list) {
+void printList(std::vector<double> list)
+{
    printListHelper(list, [](double item) {std::cout << item;});
 }
 
@@ -70,7 +74,8 @@ void printList(std::vector<double> list) {
  * 
  * @param list the list to be printed.
 */
-void printList(std::vector< std::tuple<double, int> > list) {
+void printList(std::vector< std::tuple<double, int> > list)
+{
     auto lambda = [](std::tuple<double, int> item) {
         std::cout << "(" << std::get<0>(item) << ", " << std::get<1>(item) << ")";
     };

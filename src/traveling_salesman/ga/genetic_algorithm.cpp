@@ -6,12 +6,20 @@
 #include "crossover.h"
 #include "selection.h"
 #include "../utils/array.h"
-#include "../utils/debug.h"
 #include "../utils/random.h"
+
 
 GeneticAlgorithm::GeneticAlgorithm(Fitness fitness): fitness(fitness){};
 
 
+/**
+ * Runs the traveling salesman genetic algorithm with the corresponding constants declared.
+ * 
+ * @param population_size       the size of each population for each generation.
+ * @param num_generations       the number of generations to run.
+ * @param mutation_probability  the likelihood of a chromosome to mutate genes.
+ * @return the maximum fitness value for each generation ran.
+*/
 std::vector<double> GeneticAlgorithm::run(int const& population_size, int const& num_generations, double const& mutation_probability)
 {
     std::cout << "Starting Genetic algorithm" << std::endl;

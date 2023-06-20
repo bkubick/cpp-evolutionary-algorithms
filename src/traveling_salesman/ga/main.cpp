@@ -1,16 +1,23 @@
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include <iostream>
 
 #include "chromosome.h"
 #include "fitness.h"
 #include "genetic_algorithm.h"
 
 
-std::vector< std::vector<double> > readCoordinateCsvFile(const std::string& filepath) {
+/**
+ * Helper used to read in the vector of (x, y) coordinates from a file.
+ * 
+ * @param filepath  the file path of the coordinate file.
+ * @return the vector of (x, y) coordinates read in from the file.
+*/
+std::vector< std::vector<double> > readCoordinateCsvFile(const std::string& filepath)
+{
     std::ifstream myFile;
     myFile.open(filepath, std::ios::in);
     
@@ -46,7 +53,8 @@ std::vector< std::vector<double> > readCoordinateCsvFile(const std::string& file
 }
 
 
-int main() {
+int main()
+{
     std::cout << "Starting Main" << std::endl;
     std::string test_file = "./data/traveling_salesman/TSP1.csv";
 
@@ -61,4 +69,6 @@ int main() {
 
     // Running algorithm
     ga.run(30, 50, 0.01);
+
+    return 0;
 }

@@ -2,34 +2,33 @@
 #include <functional>
 #include <tuple>
 #include <vector>
-#include <iostream>
 
 #include "crossover.h"
 #include "selection.h"
 #include "../utils/array.h"
-#include "../utils/debug.h"
 #include "../utils/random.h"
 
 using std::vector;
 
 
-int binIndexFromProbabilityBin(double value, vector<double>& bins) {
-    /**
-     * Returns the index of the bin the value falls within (right comparison).
-     * 
-     * Assumes all values are positive, and the first bin is >= 0.
-     * Does a right comparison, meaning if value falls between
-     * two bins, it returns the index of the right bin.
-     * 
-     * NOTE: Bins passed in defaults to the last bin, if the value does not fall within
-     * any other bins. Meaning, if value=2.0, and the last bin is 1.0, the index
-     * returned is the index of the last bin, even though the value is greater than
-     * the value of the last bin.
-     * 
-     * @param value the value to identify the corresponding bin.
-     * @param bins  the bins to compare the value against.
-     * @return The corresponding index of the bin the value falls within.
-    */
+/**
+ * Returns the index of the bin the value falls within (right comparison).
+ * 
+ * Assumes all values are positive, and the first bin is >= 0.
+ * Does a right comparison, meaning if value falls between
+ * two bins, it returns the index of the right bin.
+ * 
+ * NOTE: Bins passed in defaults to the last bin, if the value does not fall within
+ * any other bins. Meaning, if value=2.0, and the last bin is 1.0, the index
+ * returned is the index of the last bin, even though the value is greater than
+ * the value of the last bin.
+ * 
+ * @param value the value to identify the corresponding bin.
+ * @param bins  the bins to compare the value against.
+ * @return The corresponding index of the bin the value falls within.
+*/
+int binIndexFromProbabilityBin(double value, vector<double>& bins)
+{
     // Create vector of tuple with value and index
     vector< std::tuple<double, int> > binsAndIndices = getValueIndexArray(bins);
 
@@ -60,17 +59,19 @@ int binIndexFromProbabilityBin(double value, vector<double>& bins) {
 }
 
 
-vector<Chromosome> roulette(vector<Chromosome>& population) {
-    /**
-     * Roulette selection which creates a population of offspring with the same size as the original
-     * population. The offspring are selected using the normalized cumulative some of all the fitnesses
-     * in the population, to make it more likely a chromosome with a higher fitness (lower value) is more
-     * likely to be selected.
-     * 
-     * @param population            the population to generate the next generation from.
-     * @param crossover_function    the corresponding crossover function to use when generating the offspring.
-     * @return The newly created population.
-    */
+/**
+ * Roulette selection which creates a population of offspring with the same size as the original
+ * population. The offspring are selected using the normalized cumulative some of all the fitnesses
+ * in the population, to make it more likely a chromosome with a higher fitness (lower value) is more
+ * likely to be selected.
+ * 
+ * TODO: Need to update to take the crossover function as a parameter.
+ * 
+ * @param population            the population to generate the next generation from.
+ * @return The newly created population.
+*/
+vector<Chromosome> roulette(vector<Chromosome>& population)
+{
     if (population.size() % 2 != 0) {
         throw std::runtime_error("Population size must be an even number");
     }

@@ -3,17 +3,20 @@
 
 #include "fitness.h"
 
-#include "../utils/debug.h"
-
 using std::vector;
 
 
 Fitness::Fitness(vector< vector<double> > coordinates): fitness_matrix(createFitnessMatrix(coordinates)){}
 
 
-vector< vector<double> > Fitness::createFitnessMatrix(vector< vector<double> > const& coordinates) {
-    /* Creates the fitness matrix
-    */
+/**
+ * Creates the fitness matrix from a vector of coordinates ({ {x0,y0},  {x1,y1}, ...}).
+ * 
+ * @param coordinates   the x,y coordinates to generate the fitness matrix from.
+ * @return the newly created fitness matrix.
+*/
+vector< vector<double> > Fitness::createFitnessMatrix(vector< vector<double> > const& coordinates)
+{
     vector< vector<double> > matrix;
 
     for (int i = 0; i < coordinates.size(); i++) {
@@ -30,7 +33,16 @@ vector< vector<double> > Fitness::createFitnessMatrix(vector< vector<double> > c
 }
 
 
-double Fitness::calculateFitness(vector<int> const& order) {
+/**
+ * Calculates the total fitness from the order of locations visited associated with
+ * the original coordinates used to generate the fitness matrix. The fitness is calculated
+ * assuming the last location visited returns to the first location's coordinates.
+ * 
+ * @param order the new order of the original coordinates visited.
+ * @return the total fitness of the 
+*/
+double Fitness::calculateFitness(vector<int> const& order)
+{
     double fitness = 0.0;
 
     for (int i = 0; i < order.size() - 1; i++) {
@@ -48,6 +60,12 @@ double Fitness::calculateFitness(vector<int> const& order) {
 }
 
 
-int Fitness::size() {
+/**
+ * Gets the number of locations in the fitness matrix.
+ * 
+ * @return the size of the fitness matrix.
+*/
+int Fitness::size()
+{
     return this->fitness_matrix.size();
 }
