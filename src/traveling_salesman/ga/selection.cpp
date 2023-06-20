@@ -38,8 +38,6 @@ int binIndexFromProbabilityBin(double value, vector<double>& bins) {
       return std::get<0>(a) < std::get<0>(b);
     });
 
-    // printList(binsAndIndices);
-
     // Check left value against 0.0
     if ((value >= 0.0 && value < std::get<0>(binsAndIndices[0]))) {
         return std::get<1>(binsAndIndices[0]);
