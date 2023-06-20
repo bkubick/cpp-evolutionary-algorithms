@@ -7,7 +7,7 @@
 #include "../utils/random.h"
 
 
-std::tuple<Chromosome, Chromosome> doublePointCrossover(Chromosome parent_1, Chromosome parent_2) {
+std::tuple<Chromosome, Chromosome> doublePointCrossover(Chromosome& parent_1, Chromosome& parent_2) {
     std::vector<int> genes_1 = parent_1.getGenes();
     std::vector<int> genes_2 = parent_2.getGenes();
     int number_of_genes = genes_1.size();

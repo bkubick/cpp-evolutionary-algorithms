@@ -5,4 +5,4 @@
 #include "chromosome.h"
 
 
-vector<Chromosome> roulette(vector<Chromosome> population);
+vector<Chromosome> roulette(vector<Chromosome>& population);

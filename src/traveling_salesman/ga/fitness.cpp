@@ -11,7 +11,7 @@ using std::vector;
 Fitness::Fitness(vector< vector<double> > coordinates): fitness_matrix(createFitnessMatrix(coordinates)){}
 
 
-vector< vector<double> > Fitness::createFitnessMatrix(vector< vector<double> > coordinates) {
+vector< vector<double> > Fitness::createFitnessMatrix(vector< vector<double> >& coordinates) {
     /* Creates the fitness matrix
     */
     vector< vector<double> > matrix;
@@ -30,7 +30,7 @@ vector< vector<double> > Fitness::createFitnessMatrix(vector< vector<double> > c
 }
 
 
-double Fitness::calculateFitness(vector<int> order) {
+double Fitness::calculateFitness(vector<int>& order) {
     double fitness = 0.0;
 
     for (int i = 0; i < order.size() - 1; i++) {

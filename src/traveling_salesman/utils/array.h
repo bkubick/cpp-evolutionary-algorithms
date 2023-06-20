@@ -10,7 +10,7 @@
  * @param value the value to check if is within the corresponding vector.
  * @return      whether or not the value is within the vector.
 */
-bool containsValue(std::vector<int> list, int value);
+bool containsValue(std::vector<int>& list, int value);
 
 
 /**
@@ -19,7 +19,7 @@ bool containsValue(std::vector<int> list, int value);
  * @param array the vector to get the indexes from.
  * @return      the vector of sub-vectors containing the value and corresponding index.
 */
-std::vector< std::tuple<double, int> > getValueIndexArray(std::vector<double> array);
+std::vector< std::tuple<double, int> > getValueIndexArray(std::vector<double>& array);
 
 
 /**
@@ -63,7 +63,7 @@ std::vector<int> rangeVector(int size);
  * @param array the vector to sum the elements for.
  * @return      the value of all summed up elements.
 */
-double sumElements(std::vector<double> array);
+double sumElements(std::vector<double>& array);
 
 
 /**
@@ -73,7 +73,7 @@ double sumElements(std::vector<double> array);
  * @param array_2   the vector to subtract.
  * @return          the resulting vector difference.
 */
-std::vector<double> subtractVectors(std::vector<double> array_1, std::vector<double> array_2);
+std::vector<double> subtractVectors(std::vector<double>& array_1, std::vector<double>& array_2);
 
 
 /**
@@ -82,7 +82,7 @@ std::vector<double> subtractVectors(std::vector<double> array_1, std::vector<dou
  * @param array the vector to divide each element by.
  * @return      the resulting vector after dividing each element by a scalar.
 */
-std::vector<double> divideByScalar(std::vector<double> array, double scalar);
+std::vector<double> divideByScalar(std::vector<double>& array, double scalar);
 
 
 /**
@@ -91,6 +91,6 @@ std::vector<double> divideByScalar(std::vector<double> array, double scalar);
  * @param array the vector to create the cumulative sum vector from.
  * @return      the resulting vector of the cumulative sum.
 */
-std::vector<double> cumulativeSum(std::vector<double> array);
+std::vector<double> cumulativeSum(std::vector<double>& array);
 
 #endif

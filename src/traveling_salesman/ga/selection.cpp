@@ -13,7 +13,7 @@
 using std::vector;
 
 
-int binIndexFromProbabilityBin(double value, vector<double> bins) {
+int binIndexFromProbabilityBin(double value, vector<double>& bins) {
     /**
      * Returns the index of the bin the value falls within (right comparison).
      * 
@@ -62,7 +62,7 @@ int binIndexFromProbabilityBin(double value, vector<double> bins) {
 }
 
 
-vector<Chromosome> roulette(vector<Chromosome> population) {
+vector<Chromosome> roulette(vector<Chromosome>& population) {
     /**
      * Roulette selection which creates a population of offspring with the same size as the original
      * population. The offspring are selected using the normalized cumulative some of all the fitnesses
