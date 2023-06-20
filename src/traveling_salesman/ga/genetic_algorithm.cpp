@@ -12,7 +12,7 @@
 GeneticAlgorithm::GeneticAlgorithm(Fitness fitness): fitness(fitness){};
 
 
-std::vector<double> GeneticAlgorithm::run(const int& population_size, const int& num_generations, const double& mutation_probability)
+std::vector<double> GeneticAlgorithm::run(int const& population_size, int const& num_generations, double const& mutation_probability)
 {
     std::cout << "Starting Genetic algorithm" << std::endl;
 

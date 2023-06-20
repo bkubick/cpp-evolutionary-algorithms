@@ -26,7 +26,6 @@ std::vector< std::vector<double> > readCoordinateCsvFile(const std::string& file
         std::getline(myFile, line);
         std::stringstream s_stream(line);
 
-        // If last line is blank, break from the loop.
         if (line.length() == 0) {
             break;
         }

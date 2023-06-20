@@ -15,7 +15,7 @@ using std::vector;
  * @param value the value to check if is within the corresponding vector.
  * @return      whether or not the value is within the vector.
 */
-bool containsValue(const vector<int>& array, const int& value) {
+bool containsValue(vector<int> const& array, int const& value) {
     if (std::count(array.begin(), array.end(), value)) {
         return true;
     }
@@ -29,7 +29,7 @@ bool containsValue(const vector<int>& array, const int& value) {
  * @param array the vector to get the indexes from.
  * @return      the vector of sub-vectors containing the value and corresponding index.
 */
-vector< std::tuple<double, int> > getValueIndexArray(const vector<double>& array) {
+vector< std::tuple<double, int> > getValueIndexArray(vector<double> const& array) {
     vector< std::tuple<double, int> > arrayAndIndices;
     for (int i = 0; i < array.size(); i++) {
         arrayAndIndices.push_back({ array[i], i });
@@ -57,7 +57,7 @@ void shuffleVector(vector<int>& array)
  * @param size  the size of the vector to be created.
  * @return      the newly created ones vector with the corresponding size.
 */
-vector<double> onesVector(const int& size) {
+vector<double> onesVector(int const& size) {
     vector<double> ones_array(size, 1.0);
     return ones_array;
 }
@@ -69,7 +69,7 @@ vector<double> onesVector(const int& size) {
  * @param size  the size of the vector to be created.
  * @return      the newly created zeros vector with the corresponding size.
 */
-vector<double> zerosVector(const int& size) {
+vector<double> zerosVector(int const& size) {
     vector<double> ones_array(size, 0.0);
     return ones_array;
 }
@@ -81,7 +81,7 @@ vector<double> zerosVector(const int& size) {
  * @param size  the size of the vector to be created.
  * @return      the newly created ones vector with the corresponding size.
 */
-vector<int> rangeVector(const int& size) {
+vector<int> rangeVector(int const& size) {
     vector<int> range_vector(size);
     std::iota(range_vector.begin(), range_vector.end(), 0);
     return range_vector;
@@ -111,7 +111,7 @@ double sumElements(vector<double>& array) {
  * @param array_2   the vector to subtract.
  * @return          the resulting vector difference.
 */
-vector<double> subtractVectors(const vector<double>& array_1, const vector<double>& array_2) {
+vector<double> subtractVectors(vector<double> const& array_1, vector<double> const& array_2) {
     if (array_1.size() != array_2.size()) {
         throw std::runtime_error("Vectors are not same size");
     }
@@ -131,7 +131,7 @@ vector<double> subtractVectors(const vector<double>& array_1, const vector<doubl
  * @param array the vector to divide each element by.
  * @return      the resulting vector after dividing each element by a scalar.
 */
-vector<double> divideByScalar(const vector<double>& array, const double& scalar) {
+vector<double> divideByScalar(vector<double> const& array, double const& scalar) {
     vector<double> divided_list;
     for (int i = 0; i < array.size(); i++) {
         divided_list.push_back(array[i] / scalar);
@@ -147,7 +147,7 @@ vector<double> divideByScalar(const vector<double>& array, const double& scalar)
  * @param array the vector to create the cumulative sum vector from.
  * @return      the resulting vector of the cumulative sum.
 */
-vector<double> cumulativeSum(const vector<double>& array) {
+vector<double> cumulativeSum(vector<double> const& array) {
     double total;
     vector<double> cumulative_sum;
     for (int i = 0; i < array.size(); i++) {

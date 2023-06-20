@@ -10,7 +10,7 @@
  * @param value the value to check if is within the corresponding vector.
  * @return      whether or not the value is within the vector.
 */
-bool containsValue(const std::vector<int>& list, const int& value);
+bool containsValue(std::vector<int> const& list, int const& value);
 
 
 /**
@@ -19,7 +19,7 @@ bool containsValue(const std::vector<int>& list, const int& value);
  * @param array the vector to get the indexes from.
  * @return      the vector of sub-vectors containing the value and corresponding index.
 */
-std::vector< std::tuple<double, int> > getValueIndexArray(const std::vector<double>& array);
+std::vector< std::tuple<double, int> > getValueIndexArray(std::vector<double> const& array);
 
 
 /**
@@ -36,7 +36,7 @@ void shuffleVector(std::vector<int>& array);
  * @param size  the size of the vector to be created.
  * @return      the newly created ones vector with the corresponding size.
 */
-std::vector<double> onesVector(const int& size);
+std::vector<double> onesVector(int const& size);
 
 
 /**
@@ -45,7 +45,7 @@ std::vector<double> onesVector(const int& size);
  * @param size  the size of the vector to be created.
  * @return      the newly created zeros vector with the corresponding size.
 */
-std::vector<double> zerosVector(const int& size);
+std::vector<double> zerosVector(int const& size);
 
 
 /**
@@ -54,7 +54,7 @@ std::vector<double> zerosVector(const int& size);
  * @param size  the size of the vector to be created.
  * @return      the newly created ones vector with the corresponding size.
 */
-std::vector<int> rangeVector(const int& size);
+std::vector<int> rangeVector(int const& size);
 
 
 /**
@@ -73,7 +73,7 @@ double sumElements(std::vector<double>& array);
  * @param array_2   the vector to subtract.
  * @return          the resulting vector difference.
 */
-std::vector<double> subtractVectors(const std::vector<double>& array_1, const std::vector<double>& array_2);
+std::vector<double> subtractVectors(std::vector<double> const& array_1, std::vector<double> const& array_2);
 
 
 /**
@@ -82,7 +82,7 @@ std::vector<double> subtractVectors(const std::vector<double>& array_1, const st
  * @param array the vector to divide each element by.
  * @return      the resulting vector after dividing each element by a scalar.
 */
-std::vector<double> divideByScalar(const std::vector<double>& array, const double& scalar);
+std::vector<double> divideByScalar(std::vector<double> const& array, double const& scalar);
 
 
 /**
@@ -91,6 +91,6 @@ std::vector<double> divideByScalar(const std::vector<double>& array, const doubl
  * @param array the vector to create the cumulative sum vector from.
  * @return      the resulting vector of the cumulative sum.
 */
-std::vector<double> cumulativeSum(const std::vector<double>& array);
+std::vector<double> cumulativeSum(std::vector<double> const& array);
 
 #endif

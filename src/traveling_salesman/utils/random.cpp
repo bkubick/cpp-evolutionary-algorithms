@@ -8,7 +8,7 @@
  * @param max_number    the max value the number can be.
  * @return the randomly generated number
 */
-int generateRandomNumber(const int& max_number) {
+int generateRandomNumber(int const& max_number) {
     std::random_device rd;
     std::uniform_int_distribution<int> dist(0, max_number);
     return dist(rd);
