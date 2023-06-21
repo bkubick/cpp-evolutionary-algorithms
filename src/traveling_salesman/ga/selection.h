@@ -16,4 +16,4 @@
  * @param population    the population to generate the next generation from.
  * @return The newly created population.
 */
-vector<Chromosome> roulette(vector<Chromosome>& population);
+std::vector<Chromosome> roulette(std::vector<Chromosome>& population);
