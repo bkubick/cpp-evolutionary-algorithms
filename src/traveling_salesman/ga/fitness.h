@@ -2,17 +2,15 @@
 
 #include <vector>
 
-using std::vector;
-
 
 class Fitness
 {
     private:
-        vector< vector<double> > fitness_matrix;
-        vector< vector<double> > createFitnessMatrix(vector< vector<double> > const& coordinates);
+        std::vector< std::vector<double> > fitness_matrix;
+        std::vector< std::vector<double> > createFitnessMatrix(std::vector< std::vector<double> > const& coordinates);
 
     public:
-        Fitness(vector< vector<double> > coordinates);
-        double calculateFitness(vector<int> const& order);
+        Fitness(std::vector< std::vector<double> > coordinates);
+        double calculateFitness(std::vector<int> const& order);
         int size();
 };
