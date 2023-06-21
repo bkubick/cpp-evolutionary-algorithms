@@ -7,7 +7,7 @@
 
 /**
  * Roulette selection which creates a population of offspring with the same size as the original
- * population. The offspring are selected using the normalized cumulative some of all the fitnesses
+ * population. The offspring are selected using the normalized cumulative sum of all the fitnesses
  * in the population, to make it more likely a chromosome with a higher fitness (lower value) is more
  * likely to be selected.
  * 
