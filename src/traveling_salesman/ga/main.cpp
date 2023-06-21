@@ -5,9 +5,13 @@
 #include <string>
 #include <vector>
 
+#include "matplotlibcpp.h"
+
 #include "chromosome.h"
 #include "fitness.h"
 #include "genetic_algorithm.h"
+
+namespace plt = matplotlibcpp;
 
 
 /**
@@ -53,6 +57,29 @@ std::vector< std::vector<double> > readCoordinateCsvFile(const std::string& file
 }
 
 
+/**
+ * Helper used to output a plot of the lowest total distance (best fitness) for each generation
+ * to the corresponding pdf file name.
+ * 
+ * @param pdf_file_name         the name of the output pdf file with the plot.
+ * @param fitnesses             the list of lowest fitnesses for each generation.
+ * @param mutation_probability  the probability of the mutation used for the algorithm.
+*/
+void saveFitnessPlot(std::string pdf_file_name, std::vector<double>& fitnesses, double const& mutation_probability)
+{
+    std::vector<int> generations(fitnesses.size());
+
+    plt::plot(fitnesses);
+
+    plt::title("Total Distance Traveled");
+    plt::xlabel("Generations \n (Mutation Probability - ) " + std::to_string(mutation_probability));
+    plt::ylabel("Total Distance");
+    plt::tight_layout();
+
+    plt::savefig(pdf_file_name);
+}
+
+
 int main()
 {
     std::cout << "Starting Main" << std::endl;
@@ -68,7 +95,15 @@ int main()
     GeneticAlgorithm ga = GeneticAlgorithm(fitness);
 
     // Running algorithm
-    ga.run(30, 50, 0.01);
+    const std::string figure_file = "test.pdf";
+    const double mutation_probability = 0.01;
+    const int number_of_generations = 50;
+    const int population_size = 30;
+
+    std::cout << "Starting Genetic algorithm" << std::endl;
+    std::vector<double> fitnesses = ga.run(population_size, number_of_generations, mutation_probability);
+
+    saveFitnessPlot(figure_file, fitnesses, mutation_probability);
 
     return 0;
 }
