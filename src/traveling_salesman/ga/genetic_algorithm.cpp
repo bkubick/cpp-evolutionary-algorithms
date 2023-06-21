@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <iostream>
 #include <vector>
 
 #include "genetic_algorithm.h"
@@ -22,8 +21,6 @@ GeneticAlgorithm::GeneticAlgorithm(Fitness fitness): fitness(fitness){};
 */
 std::vector<double> GeneticAlgorithm::run(int const& population_size, int const& num_generations, double const& mutation_probability)
 {
-    std::cout << "Starting Genetic algorithm" << std::endl;
-
     // Creating original population
     std::vector<Chromosome> population_1;
     for (int i = 0; i < population_size; i++) {
@@ -61,8 +58,7 @@ std::vector<double> GeneticAlgorithm::run(int const& population_size, int const&
 
         // Pushing best value to array
         Chromosome best_chromosome = population_1[population_size - 1];
-        std::cout << "Generation " << generation + 1 << " Best Fitness: " << best_chromosome.getFitnessValue() << std::endl;
-        max_per_generation.push_back(best_chromosome.getFitnessValue());
+        max_per_generation[generation] = best_chromosome.getFitnessValue();
     }
 
     return max_per_generation;
