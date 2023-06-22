@@ -1,24 +1,2 @@
-OUTPUT = TravelingSalesmanGa
-
-STD = -std=c++11
-TAGS = -Wall -Wextra -Wpedantic -Werror
-
-DEBUG_TAGS = -Wunused-result
-
-TRAVELING_SALESMAN_DIR = src/traveling_salesman
-
-GA_DIR = $(TRAVELING_SALESMAN_DIR)/ga
-GA_FILES = $(GA_DIR)/fitness.cpp $(GA_DIR)/chromosome.cpp $(GA_DIR)/crossover.cpp  $(GA_DIR)/selection.cpp $(GA_DIR)/genetic_algorithm.cpp  $(GA_DIR)/main.cpp
-
-INCLUDE_PATH = include
-UTILS_DIR = $(TRAVELING_SALESMAN_DIR)/utils
-UTILS_FILES = $(UTILS_DIR)/array.cpp $(UTILS_DIR)/debug.cpp $(UTILS_DIR)/random.cpp
-
-PYTHON_FRAMEWORK_PATH = /Library/Developer/CommandLineTools/Library/Frameworks
-PYTHON_R_PATH = -rpath ${PYTHON_FRAMEWORK_PATH}
-PYTHON_INCLUDE = ${PYTHON_FRAMEWORK_PATH}/Python3.framework/Headers
-PYTHON_LIBRARY = ${PYTHON_FRAMEWORK_PATH}/Python3.framework/Versions/3.8/lib -lpython3.8
-NUMPY_INCLUDE = ~/Library/Python/3.8/lib/python/site-packages/numpy/core/include
-
-all:
-	clang++ $(STD) $(DEBUG_TAGS) ${PYTHON_R_PATH} $(UTILS_FILES) $(GA_FILES) -o $(OUTPUT) -I ${PYTHON_INCLUDE} -I ${NUMPY_INCLUDE} -I ${INCLUDE_PATH} -L ${PYTHON_LIBRARY}
+traveling_salesman_ga:
+	make -f makefile_traveling_salesman traveling_salesman_ga
