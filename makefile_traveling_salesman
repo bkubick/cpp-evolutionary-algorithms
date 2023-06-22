@@ -18,7 +18,6 @@ COMMON_FILES = $(TRAVELING_SALESMAN_DIR)/fitness.cpp $(TRAVELING_SALESMAN_DIR)/c
 GA_DIR = $(TRAVELING_SALESMAN_DIR)/ga
 GA_FILES = $(GA_DIR)/crossover.cpp  $(GA_DIR)/selection.cpp $(GA_DIR)/genetic_algorithm.cpp  $(GA_DIR)/main.cpp
 GA_OUTPUT = TravelingSalesmanGa
-
 genetic_algorithm:
 	clang++ $(STD) $(DEBUG_TAGS) ${PYTHON_R_PATH} $(UTILS_FILES) ${COMMON_FILES} $(GA_FILES) -o $(GA_OUTPUT) -I ${PYTHON_INCLUDE} -I ${NUMPY_INCLUDE} -I ${INCLUDE_DIR} -L ${PYTHON_LIBRARY}
 
@@ -28,3 +27,10 @@ RA_FILES = $(RA_DIR)/random_algorithm.cpp $(RA_DIR)/main.cpp
 RA_OUTPUT = TravelingSalesmanRa
 random_algorithm:
 	clang++ $(STD) $(DEBUG_TAGS) ${PYTHON_R_PATH} $(UTILS_FILES) ${COMMON_FILES} $(RA_FILES) -o $(RA_OUTPUT) -I ${PYTHON_INCLUDE} -I ${NUMPY_INCLUDE} -I ${INCLUDE_DIR} -L ${PYTHON_LIBRARY}
+
+
+HCA_DIR = $(TRAVELING_SALESMAN_DIR)/hill_climber
+HCA_FILES = $(HCA_DIR)/hill_climber_algorithm.cpp $(HCA_DIR)/main.cpp
+HCA_OUTPUT = TravelingSalesmanHCA
+hill_climber_algorithm:
+	clang++ $(STD) $(DEBUG_TAGS) ${PYTHON_R_PATH} $(UTILS_FILES) ${COMMON_FILES} $(HCA_FILES) -o $(HCA_OUTPUT) -I ${PYTHON_INCLUDE} -I ${NUMPY_INCLUDE} -I ${INCLUDE_DIR} -L ${PYTHON_LIBRARY}
