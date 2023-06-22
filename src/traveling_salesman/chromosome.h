@@ -19,3 +19,8 @@ class Chromosome {
         std::vector<int> getGenes();
         void reverseSubsetOfGenes();
 };
+
+
+namespace chromosome_factory {
+    std::vector<Chromosome> createRandomPopulation(int const& population_size, Fitness& fitness);
+}

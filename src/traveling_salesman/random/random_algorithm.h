@@ -7,7 +7,6 @@
 class RandomAlgorithm {
     private:
         Fitness fitness;
-        std::vector<Chromosome> createRandomPopulation(int const& size);
 
     public:
         RandomAlgorithm(Fitness fitness);

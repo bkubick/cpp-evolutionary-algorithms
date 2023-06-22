@@ -22,12 +22,7 @@ GeneticAlgorithm::GeneticAlgorithm(Fitness fitness): fitness(fitness){};
 std::vector<double> GeneticAlgorithm::run(int const& population_size, int const& num_generations, double const& mutation_probability)
 {
     // Creating original population
-    std::vector<Chromosome> population_1;
-    for (int i = 0; i < population_size; i++) {
-        std::vector<int> range_vector = utils::rangeVector(fitness.size());
-        utils::shuffleVector(range_vector);
-        population_1.push_back(Chromosome(fitness, range_vector));
-    }
+    std::vector<Chromosome> population_1 = chromosome_factory::createRandomPopulation(population_size, this->fitness);
 
     // Storing Best Population
     std::vector<double> max_per_generation = utils::zerosVector(num_generations);

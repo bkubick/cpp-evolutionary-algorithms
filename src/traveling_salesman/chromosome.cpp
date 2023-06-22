@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "chromosome.h"
+#include "./utils/array.h"
 #include "./utils/random.h"
 
 
@@ -84,24 +85,45 @@ std::vector<int> Chromosome::getGenes()
 */
 void Chromosome::reverseSubsetOfGenes()
 {
-    std::set<int> indices = selectKUniqueIndices(2, genes.size() - 1);
+    std::set<int> indices = selectKUniqueIndices(2, this->genes.size() - 1);
     std::vector<int> updated_genes;
 
     // Insert the genes up to the first index to flip
     for (int i = 0; i < *indices.begin(); i++) {
-        updated_genes.push_back(genes[i]);
+        updated_genes.push_back(this->genes[i]);
     }
 
     // Insert flipped genes
     for (int i = *indices.rbegin(); i > *indices.begin() - 1; i--) {
-        updated_genes.push_back(genes[i]);
+        updated_genes.push_back(this->genes[i]);
     }
 
     // Insert the remaining genes
-    for (int i = *indices.rbegin() + 1; i < genes.size(); i++) {
-        updated_genes.push_back(genes[i]);
+    for (int i = *indices.rbegin() + 1; i < this->genes.size(); i++) {
+        updated_genes.push_back(this->genes[i]);
     }
 
-    genes = updated_genes;
-    setFitnessValue();
+    this->genes = updated_genes;
+    this->setFitnessValue();
+}
+
+
+/**
+ * Helper to create a randomly generated population of chromosomes.
+ * 
+ * @param size  the size of the population of chromosomes.
+ * @return      the randomly created population.
+*/
+std::vector<Chromosome> chromosome_factory::createRandomPopulation(int const& population_size, Fitness& fitness)
+{
+    std::vector<Chromosome> population;
+    population.reserve(population_size);
+
+    for (int i = 0; i < (population_size); i++) {
+        std::vector<int> range_vector = utils::rangeVector(fitness.size());
+        utils::shuffleVector(range_vector);
+        population.push_back(Chromosome(fitness, range_vector));
+    }
+
+    return population;
 }

@@ -10,27 +10,6 @@ RandomAlgorithm::RandomAlgorithm(Fitness fitness): fitness(fitness){}
 
 
 /**
- * Helper to create a randomly generated population of chromosomes.
- * 
- * @param size  the size of the population of chromosomes.
- * @return      the randomly created population.
-*/
-std::vector<Chromosome> RandomAlgorithm::createRandomPopulation(int const& size)
-{
-    std::vector<Chromosome> population;
-    population.reserve(size);
-
-    for (int i = 0; i < (size); i++) {
-        std::vector<int> range_vector = utils::rangeVector(fitness.size());
-        utils::shuffleVector(range_vector);
-        population.push_back(Chromosome(fitness, range_vector));
-    }
-
-    return population;
-}
-
-
-/**
  * Runs the traveling salesman random algorithm with the corresponding constants declared.
  * 
  * @param population_size       the size of each population for each generation.
@@ -40,7 +19,7 @@ std::vector<Chromosome> RandomAlgorithm::createRandomPopulation(int const& size)
 std::vector<double> RandomAlgorithm::run(int const& population_size, int const& num_generations)
 {
     // Initializing population_1
-    std::vector<Chromosome> population_1 = this->createRandomPopulation(population_size);
+    std::vector<Chromosome> population_1 = chromosome_factory::createRandomPopulation(population_size, this->fitness);
 
     // Storing Best Population
     std::vector<double> max_per_generation = utils::zerosVector(num_generations);
@@ -48,7 +27,7 @@ std::vector<double> RandomAlgorithm::run(int const& population_size, int const& 
     // Running through genetic algorithm
     for (int generation = 0; generation < num_generations; generation++) {
         // Creating population 2
-        std::vector<Chromosome> population_2 = this->createRandomPopulation(population_size);
+        std::vector<Chromosome> population_2 = chromosome_factory::createRandomPopulation(population_size, this->fitness);
 
         // Sort and Grab top 50%
         std::vector<Chromosome> combined_population;
