@@ -30,7 +30,7 @@ using std::vector;
 int binIndexFromProbabilityBin(double value, vector<double>& bins)
 {
     // Create vector of tuple with value and index
-    vector< std::tuple<double, int> > binsAndIndices = getValueIndexArray(bins);
+    vector< std::tuple<double, int> > binsAndIndices = utils::getValueIndexArray(bins);
 
     // Sort the bins from least to greatest.
     std::sort(binsAndIndices.begin(), binsAndIndices.end(), [](const std::tuple<double, int>& a, const std::tuple<double, int>& b) {
@@ -70,7 +70,7 @@ int binIndexFromProbabilityBin(double value, vector<double>& bins)
  * @param population            the population to generate the next generation from.
  * @return The newly created population.
 */
-vector<Chromosome> roulette(vector<Chromosome>& population)
+vector<Chromosome> selection::roulette(vector<Chromosome>& population)
 {
     if (population.size() % 2 != 0) {
         throw std::runtime_error("Population size must be an even number");
@@ -86,17 +86,17 @@ vector<Chromosome> roulette(vector<Chromosome>& population)
     }
 
     // Getting probabilities (lower fitnesses have higher probability, so subtracting normalized value from 1)
-    vector<double> normalized_population_fitnesses = divideByScalar(population_fitnesses, total_fitness);
+    vector<double> normalized_population_fitnesses = utils::divideByScalar(population_fitnesses, total_fitness);
 
-    vector<double> ones = onesVector(population_fitnesses.size());
-    vector<double> probabilities = subtractVectors(ones, normalized_population_fitnesses);
+    vector<double> ones = utils::onesVector(population_fitnesses.size());
+    vector<double> probabilities = utils::subtractVectors(ones, normalized_population_fitnesses);
 
     // Getting Cumulative Sum
-    vector<double> cumulative_sum = cumulativeSum(probabilities);
+    vector<double> cumulative_sum = utils::cumulativeSum(probabilities);
 
     // Normalizing the cumulative sum so all values are between 0.0 - 1.0, with the largest value being 1.0
     double last_index = cumulative_sum.size() - 1;
-    vector<double> normalized_cumulative_sum = divideByScalar(cumulative_sum, cumulative_sum[last_index]);
+    vector<double> normalized_cumulative_sum = utils::divideByScalar(cumulative_sum, cumulative_sum[last_index]);
 
     vector<Chromosome> offspring;
 
@@ -104,8 +104,8 @@ vector<Chromosome> roulette(vector<Chromosome>& population)
         // Grabbing indices of parents based on random_num falling inbetween bins
         int parent_1_index = 0, parent_2_index = 0;
         while (parent_1_index == parent_2_index) {
-            double random_decimal_1 = generateRandomDecimal();
-            double random_decimal_2 = generateRandomDecimal();
+            double random_decimal_1 = utils::generateRandomDecimal();
+            double random_decimal_2 = utils::generateRandomDecimal();
             parent_1_index = binIndexFromProbabilityBin(random_decimal_1, normalized_cumulative_sum);
             parent_2_index = binIndexFromProbabilityBin(random_decimal_2, normalized_cumulative_sum);
         }
@@ -115,7 +115,7 @@ vector<Chromosome> roulette(vector<Chromosome>& population)
 
         // Grabbing New genes
         // TODO: Need to make crossover function a function parameter
-        std::tuple<Chromosome, Chromosome> children = doublePointCrossover(parent_1, parent_2);
+        std::tuple<Chromosome, Chromosome> children = crossover::doublePoint(parent_1, parent_2);
         offspring.push_back(std::get<0>(children));
         offspring.push_back(std::get<1>(children));
     }

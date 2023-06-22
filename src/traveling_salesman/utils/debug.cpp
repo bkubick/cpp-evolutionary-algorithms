@@ -31,7 +31,7 @@ void printListHelper(std::vector<T> list, Func printItem)
  * 
  * @param list the list to be printed.
 */
-void printList(std::vector<int> list)
+void debug::printList(std::vector<int> list)
 {
    printListHelper(list, [](int item) {std::cout << item;});
 }
@@ -42,7 +42,7 @@ void printList(std::vector<int> list)
  * 
  * @param list the list to be printed.
 */
-void printList(std::vector< std::vector<double> > list)
+void debug::printList(std::vector< std::vector<double> > list)
 {
     auto lambda = [](std::vector<double> item) {
         std::cout << '[';
@@ -63,7 +63,7 @@ void printList(std::vector< std::vector<double> > list)
  * 
  * @param list the list to be printed.
 */
-void printList(std::vector<double> list)
+void debug::printList(std::vector<double> list)
 {
    printListHelper(list, [](double item) {std::cout << item;});
 }
@@ -74,7 +74,7 @@ void printList(std::vector<double> list)
  * 
  * @param list the list to be printed.
 */
-void printList(std::vector< std::tuple<double, int> > list)
+void debug::printList(std::vector< std::tuple<double, int> > list)
 {
     auto lambda = [](std::tuple<double, int> item) {
         std::cout << "(" << std::get<0>(item) << ", " << std::get<1>(item) << ")";

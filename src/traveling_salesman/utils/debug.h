@@ -3,6 +3,7 @@
 #ifndef DEBUG_UTILS_
 #define DEBUG_UTILS_
 
+namespace debug {
 
 /**
  * Utility function to print out the int entities in a vector.
@@ -34,5 +35,7 @@ void printList(std::vector< std::vector<double> > list);
  * @param list the list to be printed.
 */
 void printList(std::vector< std::tuple<double, int> > list);
+
+}
 
 #endif

@@ -4,6 +4,7 @@
 
 #include "chromosome.h"
 
+namespace selection {
 
 /**
  * Roulette selection which creates a population of offspring with the same size as the original
@@ -17,3 +18,5 @@
  * @return The newly created population.
 */
 std::vector<Chromosome> roulette(std::vector<Chromosome>& population);
+
+}

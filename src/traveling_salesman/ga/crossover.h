@@ -5,6 +5,7 @@
 
 #include "chromosome.h"
 
+namespace crossover {
 
 /**
  * Crosses over the two chromosomes genes using a double point crossover.
@@ -30,4 +31,6 @@
  * @param parent_2  the second parent to crossover genes to children.
  * @return the two newly created children.
 */
-std::tuple<Chromosome, Chromosome> doublePointCrossover(Chromosome& parent_1, Chromosome& parent_2);
+std::tuple<Chromosome, Chromosome> doublePoint(Chromosome& parent_1, Chromosome& parent_2);
+
+}

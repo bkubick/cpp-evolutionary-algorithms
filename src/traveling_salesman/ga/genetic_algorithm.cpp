@@ -24,21 +24,21 @@ std::vector<double> GeneticAlgorithm::run(int const& population_size, int const&
     // Creating original population
     std::vector<Chromosome> population_1;
     for (int i = 0; i < population_size; i++) {
-        std::vector<int> range_vector = rangeVector(fitness.size());
-        shuffleVector(range_vector);
+        std::vector<int> range_vector = utils::rangeVector(fitness.size());
+        utils::shuffleVector(range_vector);
         population_1.push_back(Chromosome(fitness, range_vector));
     }
 
     // Storing Best Population
-    std::vector<double> max_per_generation = zerosVector(num_generations);
+    std::vector<double> max_per_generation = utils::zerosVector(num_generations);
 
     // Running through genetic algorithm
     for (int generation = 0; generation < num_generations; generation++) {
-        std::vector<Chromosome> population_2 = roulette(population_1);
+        std::vector<Chromosome> population_2 = selection::roulette(population_1);
 
         // Mutation
         for (int i = 0; i < population_2.size(); i++) {
-            if (generateRandomDecimal() <= mutation_probability) {
+            if (utils::generateRandomDecimal() <= mutation_probability) {
                 population_2[i].reverseSubsetGeneMutate();
             }
         }

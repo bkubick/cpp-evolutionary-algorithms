@@ -1,6 +1,7 @@
 #ifndef RANDOM_UTILS_
 #define RANDOM_UTILS_
 
+namespace utils {
 
 /**
  * Generates a random number between 0 (inclusive) and the designated max number.
@@ -18,4 +19,5 @@ int generateRandomNumber(int const& maxNumber);
 */
 double generateRandomDecimal();
 
+}
 #endif

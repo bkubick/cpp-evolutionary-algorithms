@@ -17,7 +17,7 @@ std::set<int> selectKUniqueIndices(int k, int max_index)
     std::set<int> indices;
 
     while (indices.size() < k) {
-        indices.insert(generateRandomNumber(max_index));
+        indices.insert(utils::generateRandomNumber(max_index));
     }
 
     return indices;

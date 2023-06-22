@@ -31,7 +31,7 @@
  * @param parent_2  the second parent to crossover genes to children.
  * @return the two newly created children.
 */
-std::tuple<Chromosome, Chromosome> doublePointCrossover(Chromosome& parent_1, Chromosome& parent_2)
+std::tuple<Chromosome, Chromosome> crossover::doublePoint(Chromosome& parent_1, Chromosome& parent_2)
 {
     std::vector<int> genes_1 = parent_1.getGenes();
     std::vector<int> genes_2 = parent_2.getGenes();
@@ -44,8 +44,8 @@ std::tuple<Chromosome, Chromosome> doublePointCrossover(Chromosome& parent_1, Ch
     // Determining split points
     int split_1_index = 0, split_2_index = 0;
     while (split_1_index == split_2_index) {
-        split_1_index = generateRandomNumber(number_of_genes - 1);
-        split_2_index = generateRandomNumber(number_of_genes - 1);
+        split_1_index = utils::generateRandomNumber(number_of_genes - 1);
+        split_2_index = utils::generateRandomNumber(number_of_genes - 1);
     }
 
     // Inserting elements
@@ -64,14 +64,14 @@ std::tuple<Chromosome, Chromosome> doublePointCrossover(Chromosome& parent_1, Ch
     // Inserting Front
     for (int i = 0; i < split_1_index; i++) {
         for (int j = 0; j < number_of_genes; j++) {
-            if (!containsValue(new_genes_1, genes_1[j])) {
+            if (!utils::containsValue(new_genes_1, genes_1[j])) {
                 new_genes_1[i] = genes_1[j];
                 break;
             }
         }
 
         for (int j = 0; j < number_of_genes; j++) {
-            if (!containsValue(new_genes_2, genes_2[j])) {
+            if (!utils::containsValue(new_genes_2, genes_2[j])) {
                 new_genes_2[i] = genes_2[j];
                 break;
             }
@@ -81,14 +81,14 @@ std::tuple<Chromosome, Chromosome> doublePointCrossover(Chromosome& parent_1, Ch
     // Inserting Back
     for (int i = split_2_index + 1; i < number_of_genes; i++) {
         for (int j = 0; j < number_of_genes; j++) {
-            if (!containsValue(new_genes_1, genes_1[j])) {
+            if (!utils::containsValue(new_genes_1, genes_1[j])) {
                 new_genes_1[i] = genes_1[j];
                 break;
             }
         }
 
         for (int j = 0; j < number_of_genes; j++) {
-            if (!containsValue(new_genes_2, genes_2[j])) {
+            if (!utils::containsValue(new_genes_2, genes_2[j])) {
                 new_genes_2[i] = genes_2[j];
                 break;
             }

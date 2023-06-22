@@ -9,7 +9,7 @@
  * @param max_number    the max value the number can be.
  * @return the randomly generated number
 */
-int generateRandomNumber(int const& max_number)
+int utils::generateRandomNumber(int const& max_number)
 {
     std::random_device rd;
     std::uniform_int_distribution<int> dist(0, max_number);
@@ -22,7 +22,7 @@ int generateRandomNumber(int const& max_number)
  * 
  * @return the randomly generated decimal.
 */
-double generateRandomDecimal()
+double utils::generateRandomDecimal()
 {
     std::random_device rd;
     std::uniform_real_distribution<double> dist(0.0, 1.0);

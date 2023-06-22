@@ -3,6 +3,8 @@
 #ifndef VECTOR_UTILS_
 #define VECTOR_UTILS_
 
+namespace utils {
+
 /**
  * Checks if a vector contains the value.
  * 
@@ -93,4 +95,5 @@ std::vector<double> divideByScalar(std::vector<double> const& array, double cons
 */
 std::vector<double> cumulativeSum(std::vector<double> const& array);
 
+}
 #endif
