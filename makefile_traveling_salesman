@@ -5,7 +5,7 @@ DEBUG_TAGS = -Wunused-result
 INCLUDE_DIR = include
 TRAVELING_SALESMAN_DIR = src/traveling_salesman
 UTILS_DIR = $(TRAVELING_SALESMAN_DIR)/utils
-UTILS_FILES = $(UTILS_DIR)/array.cpp $(UTILS_DIR)/debug.cpp $(UTILS_DIR)/random.cpp
+UTILS_FILES = $(UTILS_DIR)/array.cpp $(UTILS_DIR)/csv_reader.cpp $(UTILS_DIR)/debug.cpp $(UTILS_DIR)/display.cpp $(UTILS_DIR)/random.cpp
 
 PYTHON_FRAMEWORK_PATH = /Library/Developer/CommandLineTools/Library/Frameworks
 PYTHON_R_PATH = -rpath ${PYTHON_FRAMEWORK_PATH}

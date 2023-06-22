@@ -9,68 +9,13 @@
 
 #include "matplotlibcpp.h"
 
+#include "genetic_algorithm.h"
 #include "../chromosome.h"
 #include "../fitness.h"
-#include "genetic_algorithm.h"
+#include "../utils/csv_reader.h"
+#include "../utils/display.h"
 
 namespace plt = matplotlibcpp;
-
-
-/**
- * Helper used to read in the vector of (x, y) coordinates from a file.
- * 
- * @param filepath  the file path of the coordinate file.
- * @return the vector of (x, y) coordinates read in from the file.
-*/
-std::vector< std::vector<double> > readCoordinateCsvFile(const std::string& filepath)
-{
-    std::ifstream myFile;
-    myFile.open(filepath, std::ios::in);
-    
-    if (myFile.fail()) {
-        std::string errorString = "File: " + filepath + " failed to open";
-        throw std::runtime_error(errorString);
-    }
-    
-    std::vector< std::vector<double> > contents;
-    std::string line;
-    
-    while (!myFile.eof()) {
-        std::getline(myFile, line);
-        std::stringstream s_stream(line);
-
-        if (line.length() == 0) {
-            break;
-        }
-
-        std::vector<double> result;
-        while(s_stream.good()) {
-            std::string substr;
-            std::getline(s_stream, substr, ',');
-            result.push_back(std::stod(substr));
-        }
-
-        contents.push_back(result);
-    }
-
-    myFile.close();
-    
-    return contents;
-}
-
-
-/**
- * Helper to round double to set number of decimal places within a string.
- * 
- * @param value         the double to be rounded.
- * @param precisiion    how many decimal places to round the double to.
- * @return the string of the round double.
-*/
-std::string roundDouble(double value, int precision = 3) {
-    std::ostringstream ss;
-    ss << std::fixed << std::setprecision(precision) << value;
-    return ss.str();
-}
 
 
 int main(int argc, char* argv[])
@@ -84,7 +29,7 @@ int main(int argc, char* argv[])
 
     // Test coordinates. This will eventually be replaced by an input file.
     std::cout << "Reading File" << std::endl;
-    std::vector< std::vector<double> > coordinates = readCoordinateCsvFile(test_file);
+    std::vector< std::vector<double> > coordinates = utils::readCoordinateCsvFile(test_file);
 
     // fitness
     std::cout << "Creating Fitness" << std::endl;
@@ -116,7 +61,7 @@ int main(int argc, char* argv[])
         std::string output_title = "Running Genetic Algorithm";
         std::string population_text = "Population: " + std::to_string(population_size);
         std::string generation_text = "Generations: " + std::to_string(number_of_generations);
-        std::string mutation_text = "Mutation Prob: " + roundDouble(mutation_probability);
+        std::string mutation_text = "Mutation Prob: " + utils::roundDouble(mutation_probability);
 
         std::cout << output_title << " - " << population_text << " " << generation_text << " " << mutation_text << std::endl;
 
