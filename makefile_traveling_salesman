@@ -13,9 +13,18 @@ PYTHON_LIBRARY = ${PYTHON_FRAMEWORK_PATH}/Python3.framework/Versions/3.8/lib -lp
 PYTHON_INCLUDE = ${PYTHON_FRAMEWORK_PATH}/Python3.framework/Headers
 NUMPY_INCLUDE = ~/Library/Python/3.8/lib/python/site-packages/numpy/core/include
 
+COMMON_FILES = $(TRAVELING_SALESMAN_DIR)/fitness.cpp $(TRAVELING_SALESMAN_DIR)/chromosome.cpp
+
 GA_DIR = $(TRAVELING_SALESMAN_DIR)/ga
-GA_FILES = $(TRAVELING_SALESMAN_DIR)/fitness.cpp $(TRAVELING_SALESMAN_DIR)/chromosome.cpp $(GA_DIR)/crossover.cpp  $(GA_DIR)/selection.cpp $(GA_DIR)/genetic_algorithm.cpp  $(GA_DIR)/main.cpp
+GA_FILES = $(GA_DIR)/crossover.cpp  $(GA_DIR)/selection.cpp $(GA_DIR)/genetic_algorithm.cpp  $(GA_DIR)/main.cpp
 GA_OUTPUT = TravelingSalesmanGa
 
-traveling_salesman_ga:
-	clang++ $(STD) $(DEBUG_TAGS) ${PYTHON_R_PATH} $(UTILS_FILES) $(GA_FILES) -o $(GA_OUTPUT) -I ${PYTHON_INCLUDE} -I ${NUMPY_INCLUDE} -I ${INCLUDE_DIR} -L ${PYTHON_LIBRARY}
+genetic_algorithm:
+	clang++ $(STD) $(DEBUG_TAGS) ${PYTHON_R_PATH} $(UTILS_FILES) ${COMMON_FILES} $(GA_FILES) -o $(GA_OUTPUT) -I ${PYTHON_INCLUDE} -I ${NUMPY_INCLUDE} -I ${INCLUDE_DIR} -L ${PYTHON_LIBRARY}
+
+
+RA_DIR = $(TRAVELING_SALESMAN_DIR)/random
+RA_FILES = $(RA_DIR)/random_algorithm.cpp $(RA_DIR)/main.cpp
+RA_OUTPUT = TravelingSalesmanRa
+random_algorithm:
+	clang++ $(STD) $(DEBUG_TAGS) ${PYTHON_R_PATH} $(UTILS_FILES) ${COMMON_FILES} $(RA_FILES) -o $(RA_OUTPUT) -I ${PYTHON_INCLUDE} -I ${NUMPY_INCLUDE} -I ${INCLUDE_DIR} -L ${PYTHON_LIBRARY}
