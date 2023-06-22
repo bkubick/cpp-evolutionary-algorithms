@@ -74,6 +74,7 @@
         "iomanip": "cpp",
         "ranges": "cpp",
         "stack": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "filesystem": "cpp"
     }
 }

@@ -17,10 +17,8 @@ using std::vector;
 */
 bool utils::containsValue(vector<int> const& array, int const& value)
 {
-    if (std::count(array.begin(), array.end(), value)) {
-        return true;
-    }
-    return false;
+    bool found = std::find(array.begin(), array.end(), value) != array.end();
+    return found;
 }
 
 
