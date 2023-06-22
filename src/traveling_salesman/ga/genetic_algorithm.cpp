@@ -39,7 +39,7 @@ std::vector<double> GeneticAlgorithm::run(int const& population_size, int const&
         // Mutation
         for (int i = 0; i < population_2.size(); i++) {
             if (utils::generateRandomDecimal() <= mutation_probability) {
-                population_2[i].reverseSubsetGeneMutate();
+                population_2[i].reverseSubsetOfGenes();
             }
         }
 

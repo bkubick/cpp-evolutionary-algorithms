@@ -17,5 +17,5 @@ class Chromosome {
         double getFitnessValue();
         Fitness getFitness();
         std::vector<int> getGenes();
-        void reverseSubsetGeneMutate();
+        void reverseSubsetOfGenes();
 };

@@ -82,7 +82,7 @@ std::vector<int> Chromosome::getGenes()
  * i.e.
  *  {1, 2, 3, 4, 5} -> {1, 5, 4, 3, 2} if indices 1 and 4 selected.
 */
-void Chromosome::reverseSubsetGeneMutate()
+void Chromosome::reverseSubsetOfGenes()
 {
     std::set<int> indices = selectKUniqueIndices(2, genes.size() - 1);
     std::vector<int> updated_genes;
