@@ -2,8 +2,8 @@
 
 #include <vector>
 
-#include "chromosome.h"
-#include "fitness.h"
+#include "../chromosome.h"
+#include "../fitness.h"
 
 
 class GeneticAlgorithm {

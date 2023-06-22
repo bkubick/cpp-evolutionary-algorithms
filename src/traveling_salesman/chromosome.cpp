@@ -2,7 +2,7 @@
 #include <vector>
 
 #include "chromosome.h"
-#include "../utils/random.h"
+#include "./utils/random.h"
 
 
 /**

@@ -9,8 +9,8 @@
 
 #include "matplotlibcpp.h"
 
-#include "chromosome.h"
-#include "fitness.h"
+#include "../chromosome.h"
+#include "../fitness.h"
 #include "genetic_algorithm.h"
 
 namespace plt = matplotlibcpp;

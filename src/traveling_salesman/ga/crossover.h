@@ -3,7 +3,7 @@
 #include <tuple>
 #include <vector>
 
-#include "chromosome.h"
+#include "../chromosome.h"
 
 namespace crossover {
 
