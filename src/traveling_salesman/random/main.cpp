@@ -33,14 +33,8 @@ int main(int argc, char* argv[])
     RandomAlgorithm ra = RandomAlgorithm(fitness);
 
     // Running algorithm (population_size, number_of_generations)
-    // Note that the limit is based off total individuals of 100,000
+    // Note that the limit is based off total individuals of 1,000,000
     std::vector< std::tuple<int, int> > algorithm_constants = {
-        {10, 100000},
-        {20, 50000},
-        {50, 20000},
-        {10, 100000},
-        {20, 50000},
-        {50, 20000},
         {10, 100000},
         {20, 50000},
         {50, 20000},
