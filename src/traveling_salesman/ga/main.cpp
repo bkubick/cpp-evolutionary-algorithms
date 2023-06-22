@@ -94,15 +94,15 @@ int main(int argc, char* argv[])
     // Running algorithm (population_size, number_of_generations, mutation_probability)
     // Note that the limit is based off total individuals of 100,000
     std::vector< std::tuple<int, int, double> > algorithm_constants = {
-        {10, 10000, 0.001},
-        {20, 5000, 0.001},
-        {50, 2000, 0.001},
-        {10, 10000, 0.01},
-        {20, 5000, 0.01},
-        {50, 2000, 0.01},
-        {10, 10000, 0.05},
-        {20, 5000, 0.05},
-        {50, 2000, 0.05},
+        {10, 100000, 0.001},
+        {20, 50000, 0.001},
+        {50, 20000, 0.001},
+        {10, 100000, 0.01},
+        {20, 50000, 0.01},
+        {50, 20000, 0.01},
+        {10, 100000, 0.05},
+        {20, 50000, 0.05},
+        {50, 20000, 0.05},
     };
 
     // Output variables
